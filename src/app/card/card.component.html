@@ -1,0 +1,21 @@
+<div class="card" #cardContainer (click)="selectCard()">
+  <!-- Template reference variable #headerTitle -->
+  <div class="card-header">
+    <h2 #headerTitle>{{ title }}</h2>
+  </div>
+
+  <div class="card-body">
+    <!-- 6. ng-content - Content Projection -->
+    <ng-content></ng-content>
+  </div>
+
+  <div class="card-footer">
+    <!-- 7. ngTemplateOutlet - Reusable template fragments -->
+    <ng-container *ngTemplateOutlet="footerTemplate || defaultFooter"></ng-container>
+  </div>
+</div>
+
+<!-- Default Footer Template -->
+<ng-template #defaultFooter>
+  <p class="default-footer-text">Click to select this card</p>
+</ng-template>
