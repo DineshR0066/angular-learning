@@ -1,0 +1,235 @@
+/* Custom Premium CSS for Reactive Forms */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.form-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-title {
+  color: #1a202c;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.form-subtitle {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #2d3748;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+input.is-invalid {
+  border-color: #e53e3e;
+}
+
+input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.nested-group {
+  background: #f7fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.nested-group h3 {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.flex-header h3 {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-grow {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #4299e1;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #3182ce;
+}
+
+.btn-secondary {
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #e2e8f0;
+}
+
+.btn-danger {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 0.5rem 1rem;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #feb2b2;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #cbd5e0;
+  color: #4a5568;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: #f7fafc;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.state-debugger {
+  margin-top: 2rem;
+  background: #2d3748;
+  color: #a0aec0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+.state-debugger h4 {
+  color: #e2e8f0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.state-debugger p {
+  margin: 0.25rem 0;
+}
+
+.state-debugger span {
+  color: #ecc94b;
+}
+
+.text-success {
+  color: #48bb78 !important;
+}
+
+.text-danger {
+  color: #f56565 !important;
+}

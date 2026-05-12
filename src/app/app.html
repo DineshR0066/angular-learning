@@ -1,45 +1,11 @@
 <main class="main" style="padding: 20px; max-width: 800px; margin: 0 auto;">
-  <h1>{{ title() }}</h1>
-  
-  <p>Last Selected: <strong>{{ selectedMessage || 'None' }}</strong></p>
 
-  <hr style="margin: 20px 0;">
 
-  <!-- 1. Basic @Input and @Output -->
-  <app-card 
-    title="Basic Card" 
-    (selected)="onCardSelected($event)">
-    <p>This is a basic card with just text in the body.</p>
-  </app-card>
+  <nav style="margin-bottom: 20px; padding: 10px; background-color: #3379bf; border-radius: 8px;">
+    <strong>Navigation: </strong>
+    <a routerLink="/" style="margin-right: 15px; ">Home</a>
+    <a routerLink="/reactive-form" style="margin-right: 15px;">Reactive Form Practice</a>
+  </nav>
 
-  <!-- 2. ng-content (Content Projection) with Template Reference Variable -->
-  <app-card 
-    title="Projected Content Card" 
-    (selected)="onCardSelected($event)">
-    <div #projectedInfo>
-      <p>This content is <strong>projected</strong> from the parent!</p>
-      <p>The child component can access this div using @ContentChild.</p>
-    </div>
-  </app-card>
-
-  <!-- 3. ngTemplateOutlet (Custom Footer) -->
-  <app-card 
-    title="Custom Template Card" 
-    [footerTemplate]="customFooter"
-    (selected)="onCardSelected($event)">
-    <p>This card uses a custom footer defined in the parent component.</p>
-  </app-card>
-
-  <!-- Reusable Template Fragment -->
-  <ng-template #customFooter>
-    <div style="background-color: #e3f2fd; padding: 5px; border-radius: 4px;">
-      <span style="color: #1976d2; font-weight: bold;">★ Priority Member Footer ★</span>
-    </div>
-  </ng-template>
-
-  <hr style="margin: 40px 0;">
-  
-  <app-user-list></app-user-list>
+  <router-outlet />
 </main>
-
-<router-outlet />

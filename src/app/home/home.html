@@ -1,0 +1,41 @@
+<div>
+  <p>Last Selected: <strong>{{ selectedMessage || 'None' }}</strong></p>
+
+  <hr style="margin: 20px 0;">
+
+  <!-- 1. Basic @Input and @Output -->
+  <app-card 
+    title="Basic Card" 
+    (selected)="onCardSelected($event)">
+    <p>This is a basic card with just text in the body.</p>
+  </app-card>
+
+  <!-- 2. ng-content (Content Projection) with Template Reference Variable -->
+  <app-card 
+    title="Projected Content Card" 
+    (selected)="onCardSelected($event)">
+    <div #projectedInfo>
+      <p>This content is <strong>projected</strong> from the parent!</p>
+      <p>The child component can access this div using @ContentChild.</p>
+    </div>
+  </app-card>
+
+  <!-- 3. ngTemplateOutlet (Custom Footer) -->
+  <app-card 
+    title="Custom Template Card" 
+    [footerTemplate]="customFooter"
+    (selected)="onCardSelected($event)">
+    <p>This card uses a custom footer defined in the parent component.</p>
+  </app-card>
+
+  <!-- Reusable Template Fragment -->
+  <ng-template #customFooter>
+    <div style="background-color: #e3f2fd; padding: 5px; border-radius: 4px;">
+      <span style="color: #1976d2; font-weight: bold;">★ Priority Member Footer ★</span>
+    </div>
+  </ng-template>
+
+  <hr style="margin: 40px 0;">
+  
+  <app-user-list></app-user-list>
+</div>

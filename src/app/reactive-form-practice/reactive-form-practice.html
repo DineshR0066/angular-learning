@@ -1,0 +1,101 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">Registration Form</h2>
+    <p class="form-subtitle">Practice Reactive Forms in Angular</p>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" 
+               [class.is-invalid]="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched">
+        
+        <div class="error-message" *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched">
+          <small *ngIf="registrationForm.get('username')?.errors?.['required']">Username is required.</small>
+          <small *ngIf="registrationForm.get('username')?.errors?.['minlength']">Username must be at least 4 characters.</small>
+          <small *ngIf="registrationForm.get('username')?.errors?.['forbiddenName']">Username 'admin' is not allowed.</small>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email"
+               [class.is-invalid]="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+        
+        <div class="error-message" *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+          <small *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="registrationForm.get('email')?.errors?.['email']">Please enter a valid email address.</small>
+        </div>
+      </div>
+
+      <!-- Nested FormGroup: Address -->
+      <div formGroupName="address" class="nested-group">
+        <h3>Address Details</h3>
+        
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" id="street" formControlName="street"
+                 [class.is-invalid]="registrationForm.get('address.street')?.invalid && registrationForm.get('address.street')?.touched">
+          <div class="error-message" *ngIf="registrationForm.get('address.street')?.invalid && registrationForm.get('address.street')?.touched">
+            <small *ngIf="registrationForm.get('address.street')?.errors?.['required']">Street is required.</small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half-width">
+            <label for="city">City</label>
+            <input type="text" id="city" formControlName="city"
+                   [class.is-invalid]="registrationForm.get('address.city')?.invalid && registrationForm.get('address.city')?.touched">
+            <div class="error-message" *ngIf="registrationForm.get('address.city')?.invalid && registrationForm.get('address.city')?.touched">
+              <small *ngIf="registrationForm.get('address.city')?.errors?.['required']">City is required.</small>
+            </div>
+          </div>
+
+          <div class="form-group half-width">
+            <label for="zipCode">Zip Code</label>
+            <input type="text" id="zipCode" formControlName="zipCode"
+                   [class.is-invalid]="registrationForm.get('address.zipCode')?.invalid && registrationForm.get('address.zipCode')?.touched">
+            <div class="error-message" *ngIf="registrationForm.get('address.zipCode')?.invalid && registrationForm.get('address.zipCode')?.touched">
+              <small *ngIf="registrationForm.get('address.zipCode')?.errors?.['required']">Zip Code is required.</small>
+              <small *ngIf="registrationForm.get('address.zipCode')?.errors?.['pattern']">Must be 5-6 digits.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FormArray: Phone Numbers -->
+      <div class="nested-group">
+        <div class="flex-header">
+          <h3>Phone Numbers</h3>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="addPhoneNumber()">+ Add</button>
+        </div>
+
+        <div formArrayName="phoneNumbers">
+          <div *ngFor="let phone of phoneNumbers.controls; let i = index" class="form-row align-items-center mb-1">
+            <div class="form-group flex-grow">
+              <input type="text" [formControlName]="i" placeholder="10-digit number"
+                     [class.is-invalid]="phone.invalid && phone.touched">
+              <div class="error-message" *ngIf="phone.invalid && phone.touched">
+                <small *ngIf="phone.errors?.['required']">Phone is required.</small>
+                <small *ngIf="phone.errors?.['pattern']">Must be a 10-digit number.</small>
+              </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm" (click)="removePhoneNumber(i)" [disabled]="phoneNumbers.length === 1">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-outline" (click)="fillDefaultValues()">Fill Data (patchValue)</button>
+        <button type="button" class="btn btn-outline" (click)="resetForm()">Reset</button>
+        <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>
